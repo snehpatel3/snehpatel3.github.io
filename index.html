@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sneh Patel - Senior Associate Software Engineer Portfolio">
+    <title>Sneh Patel | Software Engineer</title>
+    
+    <!-- Fonts: Inter for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Lucide (Lightweight SVG icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ========================================
+        CSS VARIABLES & RESET
+        ========================================
+        */
+        :root {
+            /* Light Theme */
+            --bg-body: #ffffff;
+            --bg-card: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #0f766e; /* Muted Teal */
+            --accent-hover: #115e59;
+            --border: #e2e8f0;
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #2dd4bf; /* Brighter Teal for Dark Mode */
+            --accent-hover: #14b8a6;
+            --border: #334155;
+            --nav-bg: rgba(15, 23, 42, 0.85);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+        NAVIGATION
+        ========================================
+        */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--bg-card);
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--text-main);
+        }
+
+        /* ========================================
+        HERO SECTION
+        ========================================
+        */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 0;
+        }
+
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-name {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            max-width: 600px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* ========================================
+        ABOUT & SKILLS
+        ========================================
+        */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            right: -10px;
+            width: 40px;
+            height: 4px;
+            background-color: var(--accent);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+
+        .skills-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+        PROJECTS
+        ========================================
+        */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .folder-icon {
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--text-muted);
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        /* ========================================
+        FOOTER
+        ========================================
+        */
+        #contact {
+            text-align: center;
+            padding: 8rem 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-icon {
+            color: var(--text-muted);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .contact-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+        RESPONSIVE
+        ========================================
+        */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--nav-bg);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">SP.</a>
+            
+            <div class="nav-links" id="nav-links">
+                <a href="#about" onclick="toggleMenu()">About</a>
+                <a href="#experience" onclick="toggleMenu()">Experience</a>
+                <a href="#projects" onclick="toggleMenu()">Projects</a>
+                <a href="#contact" onclick="toggleMenu()">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i data-lucide="moon"></i>
+                </button>
+            </div>
+
+            <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <p class="hero-intro">Hi, my name is</p>
+            <h1 class="hero-name">Sneh Patel.</h1>
+            <h2 class="hero-title">I build practical software solutions.</h2>
+            <p class="hero-desc">
+                Sr. Associate Software Engineer specialized in backend systems, cloud infrastructure (AWS), and automation. I deliver cost-effective and quality solutions via Agile best practices.
+            </p>
+            <div class="cta-group">
+                <a href="#projects" class="btn btn-primary">View Work</a>
+                <!-- Replace href with actual resume file path -->
+                <a href="Sneh-Resume.pdf" class="btn btn-secondary" download>
+                    Download Resume <i data-lucide="download" size="16"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About & Skills Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am an enthusiastic software engineer based in Brampton, ON, who loves to build practical and time-saving software solutions. 
+                        With a Master of Engineering from the University of Waterloo and a background in Computer Science from the University of Toronto, I have honed a deep understanding of software architecture.
+                    </p>
+                    <p>
+                        Currently, I work at <strong>Capital One</strong>, where I focus on internal CI/CD pipelines and infrastructure automation. My passion lies in identifying bottlenecks in existing software and designing automated solutions to fix them.
+                    </p>
+                    <p>
+                        I am also a Certified AWS Cloud Practitioner with extensive experience in migrating legacy systems to modern cloud architectures.
+                    </p>
+                </div>
+                
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3>Languages</h3>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Ruby</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">C#</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skills-grid">
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Jenkins</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Frameworks</h3>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Spring</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">Ruby on Rails</span>
+                            <span class="skill-tag">.NET</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section (Styled as List) -->
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div style="margin-top: 2rem;">
+                <!-- Job 1 -->
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700;">Sr. Associate Software Engineer</h3>
+                    <p style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.5rem;">Capital One | Sep 2021 - Present</p>
+                    <ul style="list-style: disc; margin-left: 1.5rem; color: var(--text-muted);">
+                        <li>Led migration efforts to manage CI/CD internal pipelines, improving costs and efficiency.</li>
+                        <li>Implemented features for internal IaC tools to enhance AWS resource management.</li>
+                        <li>Designed automation tools using GitHub Apps to enforce best practices.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700;">Software Engineer</h3>
+                    <p style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.5rem;">Nasdaq Data Link | May 2019 - Sep 2021</p>
+                    <ul style="list-style: disc; margin-left: 1.5rem; color: var(--text-muted);">
+                        <li>Managed and provisioned various AWS services using Terraform.</li>
+                        <li>Automated business processes using AWS, increasing overall efficiency.</li>
+                        <li>Performed Test-Driven Development (TDD) using RSpec and Selenium.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700;">Software Engineer Intern</h3>
+                    <p style="color: var(--accent); font-size: 0.95rem; margin-bottom: 0.5rem;">First Derivatives plc. | May 2016 - Sep 2017</p>
+                    <ul style="list-style: disc; margin-left: 1.5rem; color: var(--text-muted);">
+                        <li>Developed full-stack applications using SpringMVC, React, and AngularJs.</li>
+                        <li>Facilitated the migration process from SVN to Git.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">A selection of things I've built or contributed to.</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <i data-lucide="folder" class="folder-icon"></i>
+                            <div class="project-links">
+                                <a href="#" aria-label="GitHub Repo"><i data-lucide="github"></i></a>
+                                <a href="#" aria-label="Live Demo"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">AWS Infrastructure Automation</h3>
+                        <p class="project-desc">
+                            An automated solution to manage and provision cloud resources using Infrastructure as Code principles.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span>Terraform</span>
+                        <span>AWS</span>
+                        <span>Jenkins</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <i data-lucide="folder" class="folder-icon"></i>
+                            <div class="project-links">
+                                <a href="#" aria-label="GitHub Repo"><i data-lucide="github"></i></a>
+                                <a href="#" aria-label="Live Demo"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">FinTech Data Pipeline</h3>
+                        <p class="project-desc">
+                            A robust pipeline for processing financial datasets, migrated from legacy systems to modern cloud architecture.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>SQL</span>
+                        <span>Docker</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div>
+                        <div class="project-header">
+                            <i data-lucide="folder" class="folder-icon"></i>
+                            <div class="project-links">
+                                <a href="#" aria-label="GitHub Repo"><i data-lucide="github"></i></a>
+                                <a href="#" aria-label="Live Demo"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Internal CI/CD Tool</h3>
+                        <p class="project-desc">
+                            Custom tooling built with GitHub Apps to manage deployment pipelines and enforce coding standards across teams.
+                        </p>
+                    </div>
+                    <div class="project-tech">
+                        <span>Node.js</span>
+                        <span>GitHub API</span>
+                        <span>React</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="max-width: 500px; margin: 0 auto; color: var(--text-muted);">
+                I am currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open.
+            </p>
+            
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/patelsn/" target="_blank" class="contact-icon" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" width="32" height="32"></i>
+                </a>
+                <a href="https://github.com/patelsn" target="_blank" class="contact-icon" aria-label="GitHub">
+                    <i data-lucide="github" width="32" height="32"></i>
+                </a>
+                <a href="mailto:snehhh.patel@gmail.com" class="contact-icon" aria-label="Email">
+                    <i data-lucide="mail" width="32" height="32"></i>
+                </a>
+            </div>
+
+            <a href="mailto:snehhh.patel@gmail.com" class="btn btn-primary">Say Hello</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sneh Patel. Built with HTML, CSS & Vanilla JS.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const iconElement = themeToggleBtn.querySelector('i');
+
+        // Check local storage for theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            // Re-render the icon based on theme
+            iconElement.setAttribute('data-lucide', theme === 'light' ? 'moon' : 'sun');
+            lucide.createIcons();
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navLinks = document.getElementById('nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
